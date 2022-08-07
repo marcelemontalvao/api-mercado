@@ -18,5 +18,11 @@ public class PagamentoService {
     public void add (PagamentosDTO pagamentosDTO){
         PagamentoEntity entity = modelMapper.map(pagamentosDTO, PagamentoEntity.class);
         pagamentoRepository.save(entity);
+        RequestPagamento();
+    }
+
+    public void RequestPagamento() {
+        String Auth = AuthenticationService.getUrlAuthenticator();
+        System.out.println("Aqui é o auth " + Auth);
     }
 }

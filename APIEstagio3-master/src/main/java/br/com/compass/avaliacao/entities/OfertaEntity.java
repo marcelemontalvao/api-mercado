@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "pedido_itens_ofertas")
 public class OfertaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

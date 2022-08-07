@@ -2,11 +2,9 @@ package br.com.compass.avaliacao.service;
 
 import br.com.compass.avaliacao.entities.ItemEntity;
 import br.com.compass.avaliacao.entities.OfertaEntity;
-import br.com.compass.avaliacao.entities.PedidoEntity;
 import br.com.compass.avaliacao.entities.dto.request.RequestItemDTO;
 import br.com.compass.avaliacao.entities.dto.request.RequestOfertaDTO;
 import br.com.compass.avaliacao.entities.dto.response.ResponseItemDTO;
-import br.com.compass.avaliacao.entities.dto.response.ResponsePedidoDTO;
 import br.com.compass.avaliacao.exceptions.OfertaNotFoundException;
 import br.com.compass.avaliacao.repository.ItemRepository;
 import org.junit.jupiter.api.Assertions;
@@ -18,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
-import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
