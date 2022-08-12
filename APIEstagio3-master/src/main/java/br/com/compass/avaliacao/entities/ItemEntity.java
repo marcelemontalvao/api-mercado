@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemEntity {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String nome;
         private Date dataDeCriacao;
@@ -24,7 +24,8 @@ public class ItemEntity {
         private Double valor;
         private String descricao;
 
-        @ManyToMany(cascade = CascadeType.ALL)
+        @OneToMany(cascade = CascadeType.ALL)
+        @JoinColumn(name = "item_id")
         private List<OfertaEntity> ofertas;
 }
 

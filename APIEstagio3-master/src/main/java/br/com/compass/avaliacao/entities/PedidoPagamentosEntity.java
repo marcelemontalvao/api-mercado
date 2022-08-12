@@ -13,14 +13,14 @@ import javax.persistence.*;
 @Table(name = "pedido_pagamentos")
 public class PedidoPagamentosEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer numeroDoCartao;
+    private String numeroDoCartao;
     private String nomeDoCartao;
     private String codigoDeSeguranca;
     private String marca;
     private String mesDeExpiracao;
-    private Integer anoDeExpiracao;
+    private String anoDeExpiracao;
     private String moeda;
     private Double valor;
 }

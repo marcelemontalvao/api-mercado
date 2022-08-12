@@ -1,8 +1,13 @@
-package br.com.compass.pagamentosapi.dto;
+package br.com.compass.avaliacao.rabbit;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Data
-public class PagamentosDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class PedidoCreatedEvent {
     private Long pedidoId;
     private Double pedidoValorTotal;
     private String Cpf;

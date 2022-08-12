@@ -1,4 +1,4 @@
-package br.com.compass.avaliacao;
+package br.com.compass.avaliacao.rabbit;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -29,7 +29,6 @@ public class RabbitMQConfig {
 
         return new RabbitAdmin(connectionFactory);
     }
-
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory,

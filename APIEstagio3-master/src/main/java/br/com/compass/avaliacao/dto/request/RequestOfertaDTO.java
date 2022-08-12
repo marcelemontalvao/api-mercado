@@ -1,4 +1,4 @@
-package br.com.compass.avaliacao.entities.dto.request;
+package br.com.compass.avaliacao.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

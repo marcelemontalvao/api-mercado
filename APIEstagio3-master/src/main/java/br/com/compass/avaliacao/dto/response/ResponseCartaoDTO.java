@@ -1,12 +1,10 @@
-package br.com.compass.pagamentosapi.dto;
+package br.com.compass.avaliacao.dto.response;
 
 import lombok.Data;
+
 @Data
-public class PagamentosDTO {
-    private Long pedidoId;
-    private Double pedidoValorTotal;
-    private String Cpf;
-    private String tipoDoPagamento;
+public class ResponseCartaoDTO {
+    private Long id;
     private String numeroDoCartao;
     private String nomeDoCartao;
     private String codigoDeSeguranca;

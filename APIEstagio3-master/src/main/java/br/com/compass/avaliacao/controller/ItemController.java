@@ -1,6 +1,6 @@
 package br.com.compass.avaliacao.controller;
 
-import br.com.compass.avaliacao.entities.dto.request.RequestItemDTO;
+import br.com.compass.avaliacao.dto.request.RequestItemDTO;
 import br.com.compass.avaliacao.exceptions.OfertaNotFoundException;
 import br.com.compass.avaliacao.repository.ItemRepository;
 import br.com.compass.avaliacao.service.ItemService;

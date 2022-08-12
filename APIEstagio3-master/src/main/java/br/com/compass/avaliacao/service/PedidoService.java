@@ -1,14 +1,18 @@
 package br.com.compass.avaliacao.service;
 
+import br.com.compass.avaliacao.Enum.StatusDoPagamento;
 import br.com.compass.avaliacao.entities.PedidoEntity;
-import br.com.compass.avaliacao.entities.dto.request.RequestPedidoDTO;
-import br.com.compass.avaliacao.entities.dto.response.ResponsePedidoDTO;
+import br.com.compass.avaliacao.dto.request.RequestPedidoDTO;
+import br.com.compass.avaliacao.dto.response.ResponsePedidoDTO;
 import br.com.compass.avaliacao.exceptions.PedidoNotFoundException;
 import br.com.compass.avaliacao.repository.PedidoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,7 +54,11 @@ public class PedidoService {
 
     public ResponsePedidoDTO delete(Long id) {
         PedidoEntity pedidoEntity = pedidoRepository.findById(id).orElseThrow(PedidoNotFoundException::new);
-        pedidoRepository.delete(pedidoEntity);
+            if (pedidoEntity.getStatusDoPagamento().equals(StatusDoPagamento.PROCESSANDO.name())) {
+                pedidoRepository.delete(pedidoEntity);
+            }else {
+                throw new ResponseStatusException(HttpStatus.METHOD_NOT_ALLOWED);
+            }
         return modelMapper.map(pedidoEntity, ResponsePedidoDTO.class);
     }
 

@@ -1,8 +1,8 @@
 package br.com.compass.avaliacao.service;
 
 import br.com.compass.avaliacao.entities.PedidoEntity;
-import br.com.compass.avaliacao.entities.dto.request.RequestPedidoDTO;
-import br.com.compass.avaliacao.entities.dto.response.ResponsePedidoDTO;
+import br.com.compass.avaliacao.dto.request.RequestPedidoDTO;
+import br.com.compass.avaliacao.dto.response.ResponsePedidoDTO;
 import br.com.compass.avaliacao.exceptions.PedidoNotFoundException;
 import br.com.compass.avaliacao.repository.PedidoRepository;
 import org.junit.jupiter.api.Assertions;

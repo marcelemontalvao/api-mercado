@@ -2,9 +2,9 @@ package br.com.compass.avaliacao.service;
 
 import br.com.compass.avaliacao.entities.ItemEntity;
 import br.com.compass.avaliacao.entities.OfertaEntity;
-import br.com.compass.avaliacao.entities.dto.request.RequestItemDTO;
-import br.com.compass.avaliacao.entities.dto.request.RequestOfertaDTO;
-import br.com.compass.avaliacao.entities.dto.response.ResponseItemDTO;
+import br.com.compass.avaliacao.dto.request.RequestItemDTO;
+import br.com.compass.avaliacao.dto.request.RequestOfertaDTO;
+import br.com.compass.avaliacao.dto.response.ResponseItemDTO;
 import br.com.compass.avaliacao.exceptions.ItemNotFoundException;
 import br.com.compass.avaliacao.exceptions.OfertaNotFoundException;
 import br.com.compass.avaliacao.repository.ItemRepository;

@@ -1,19 +1,20 @@
 package br.com.compass.avaliacao.controller;
 
-import br.com.compass.avaliacao.entities.dto.request.RequestPedidoDTO;
-import br.com.compass.avaliacao.entities.dto.response.ResponsePedidoDTO;
+import br.com.compass.avaliacao.rabbit.PedidoCreatedProducer;
+import br.com.compass.avaliacao.dto.request.RequestPedidoDTO;
+import br.com.compass.avaliacao.dto.response.ResponsePedidoDTO;
 import br.com.compass.avaliacao.repository.PedidoRepository;
 import br.com.compass.avaliacao.service.PedidoService;
-import net.bytebuddy.TypeCache;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import javax.validation.Valid;
-import java.math.BigDecimal;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,9 @@ public class PedidoController {
 
     @Autowired
     private PedidoRepository pedidoRepository;
+
+    @Autowired
+    private PedidoCreatedProducer pedidoCreatedProducer;
 
     @GetMapping()
     public ResponseEntity<List<ResponsePedidoDTO>> get
@@ -43,9 +47,11 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponsePedidoDTO> postPedido(@RequestBody @Valid RequestPedidoDTO request) {
+    public ResponseEntity<ResponsePedidoDTO> postPedido( @Valid @RequestBody RequestPedidoDTO request, UriComponentsBuilder uriBuilder) {
         ResponsePedidoDTO responsePedido = pedidoService.save(request);
-        return ResponseEntity.ok(responsePedido);
+        pedidoCreatedProducer.sendMessage(responsePedido);
+        URI uri = uriBuilder.path("/api/pedidos/{id}").buildAndExpand(responsePedido.getId()).toUri();
+        return ResponseEntity.created(uri).body(responsePedido);
     }
 
     @DeleteMapping("{id}")

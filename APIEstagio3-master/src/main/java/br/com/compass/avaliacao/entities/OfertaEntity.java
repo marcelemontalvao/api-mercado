@@ -14,7 +14,7 @@ import java.util.Date;
 @Table(name = "pedido_itens_ofertas")
 public class OfertaEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private Date dataDeCriacao;
