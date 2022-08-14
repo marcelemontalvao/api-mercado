@@ -26,7 +26,7 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @PatchMapping("{id}")
-    public ResponseEntity<Void> update(@Valid @RequestBody  RequestItemDTO request, @PathVariable Long id) throws OfertaNotFoundException {
+    public ResponseEntity<Void> update(@Valid @RequestBody RequestItemDTO request, @PathVariable Long id) throws OfertaNotFoundException {
         itemService.update(request, id);
         return ResponseEntity.noContent().build();
     }
